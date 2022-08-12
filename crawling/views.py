@@ -2,13 +2,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .models import IdeaData, SpartanEdu, WebData, EngineeringData, SwData
 from .serializers import IdeaSerializer, NoticeSerializer, WebSerializer, EngineeringSerializer, SwSerializer
+from django.shortcuts import render
 
-import _spartansw
+import _spartansw, cron
 
 # Create your views here.
-@api_view(['GET'])
-def testAPI(request):
-    return Response("테스트")
 
 @api_view(['GET'])
 def Idea(request):
@@ -40,3 +38,8 @@ def Spartan(request):
     totaldata = SpartanEdu.objects.all()
     serialzer = NoticeSerializer(totaldata, many = True)
     return Response(serialzer.data)
+
+@api_view(['GET'])
+def Crawling(request):
+    cron.run()
+    return Response("크롤링 완료!")

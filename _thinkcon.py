@@ -62,7 +62,7 @@ def crawl(tag):
             }
 
             list.append(data)
-            # print(data)
+            print(data)
 
             i += 1            
 
@@ -74,7 +74,7 @@ def crawl(tag):
 
     return list
 
-if __name__ == '__main__':
+def cycle():
     list = crawl("아이디어")
     for data in list:
         try:
@@ -95,3 +95,7 @@ if __name__ == '__main__':
             SwData(title = data['title'], due = data['due'], link = data['link']).save()
         except django.db.utils.IntegrityError:
             pass
+
+if __name__ == '__main__':
+    cycle()
+    print("크롤링 완료")
