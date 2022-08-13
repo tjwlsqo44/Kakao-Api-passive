@@ -66,7 +66,7 @@ def crawl(tag):
             }
 
             list.append(data)
-            print(data)
+            # print(data)
 
     # print(list)
     # print(len(list))
@@ -101,6 +101,8 @@ def cycle():
             SwData(title = data['title'], due = data['due'], link = data['link']).save()
         except django.db.utils.IntegrityError:
             pass
+
+    print("크롤링 완료")
 
 if __name__ == '__main__':
     cycle()
