@@ -10,7 +10,7 @@ class IdeaData(models.Model):
         return self.title
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields = ['title', 'due', 'link'], name = 'idea_contest')
+            models.UniqueConstraint(fields = ['title' , 'link'], name = 'idea_contest')
         ]
 
 class WebData(models.Model):
@@ -22,7 +22,7 @@ class WebData(models.Model):
         return self.title
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields = ['title', 'due', 'link'], name = 'web_contest')
+            models.UniqueConstraint(fields = ['title' , 'link'], name = 'web_contest')
         ]
 
 class EngineeringData(models.Model):
@@ -34,7 +34,7 @@ class EngineeringData(models.Model):
         return self.title
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields = ['title', 'due', 'link'], name = 'engineering_contest')
+            models.UniqueConstraint(fields = ['title' , 'link'], name = 'engineering_contest')
         ]
 
 class SwData(models.Model):
@@ -46,7 +46,7 @@ class SwData(models.Model):
         return self.title
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields = ['title', 'due', 'link'], name = 'sw_contest')
+            models.UniqueConstraint(fields = ['title' , 'link'], name = 'sw_contest')
         ]
     
 class SpartanEdu(models.Model):
