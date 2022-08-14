@@ -8,7 +8,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', "kapi.settings")
 django.setup()
 from crawling.models import SpartanEdu
 
-def crawl():
+def spartan():
     list = []
     url = "http://spartan.ssu.ac.kr/board/board_list?code=notice"
     res = requests.get(url)
@@ -39,6 +39,16 @@ def crawl():
     
     # print(list)
     return list
+
+def crawl():
+    list = spartan()
+    SpartanEdu.objects.all().delete()
+    
+    for data in list:
+        try:
+            SpartanEdu(title = data['title'], link = data['link']).save()
+        except django.db.utils.IntegrityError:
+            pass
 
 if __name__ == "__main__":
     list = crawl()
